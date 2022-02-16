@@ -1,0 +1,104 @@
+.sidebar{
+    width: 250px;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+}
+
+.sidebar .logo{
+padding: 0px 15px;
+}
+.sidebar .logo img{
+height: 170px;
+}
+.sidebar .nav{
+padding: 50px 35px;
+}
+.sidebar .nav li{
+
+}
+.sidebar .nav li a{
+align-items: center;
+padding: 0px 15px;
+display:table;
+}
+.sidebar .nav li a .label{
+   
+}
+.sidebar .nav li a.active,
+.sidebar .nav li a.on{
+border-left: 2px #69707c solid;
+color:#69707c;
+line-height: 1;
+}
+
+.app-content{
+    flex-direction: column;
+    height: 100vh;
+    display: flex;
+    justify-content: start;
+}
+
+.question{
+    
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    text-align:  center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    flex-direction: column;
+}
+
+.answer{
+   
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    text-align:  center;
+
+}
+
+.container{
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    height: 75vh;
+    flex-direction: column;
+    justify-content: center;
+}
+ 
+.home-page{
+    width: 75vw;
+    padding: 20px 0px;
+}
+.app-page{
+    width: 75vw;
+    padding: 20px 0px;
+}
+
+.levels{
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 85vh;
+}
+.settings_select{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 100%;
+    flex: 0.8;
+    justify-content: space-evenly;
+}
+.tests{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;   
+}
