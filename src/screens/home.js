@@ -10,7 +10,6 @@ function HomePage (){
     return(
         <div className="home-page ">
            <div> <h2 className="title">Main Page</h2></div>
-            <TestCard/>
         </div>
     )
 }

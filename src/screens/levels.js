@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import { getLvl } from "../Data/Data";
+import{useNavigate}from "react-router-dom"
 
 
 function LevelsPage(){
@@ -13,9 +14,20 @@ function LevelsPage(){
         return getLvl(setLevel)
     },[])
 
+    const navigation=useNavigate();
+
+    const fetchLvl= async (id="")=>{
+        const {data}= await axios.get(`https://localhost:44310/api/TestSets/getByLevel/${id}`)
+  
+    }
+    const handleSubmit=(id)=>{
+        fetchLvl(id)
+        
+    }
+
     const allLvl=level.map((el)=>{
       return (
-        <div className="level" key={el.id}>{el.difficultyLevel}</div>
+        <button onClick={()=>handleSubmit(el.id)} className="level" key={el.id}>{el.difficultyLevel}</button>
       )
     })
 

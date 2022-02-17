@@ -11,9 +11,10 @@ function CategoriesPage(){
 
     const allCat=categories.map((el)=>{
       return (
-        <div className="level" key={el.id}>{el.name}</div>
+        <button className="level" key={el.id}>{el.name}</button>
       )
     })
+    
     useEffect(()=>{
         document.title = "Categories";
     })

@@ -19,7 +19,9 @@ Routes
 
 
 
+
 function App() {
+
   return (
     <div className="App flex">
        <Sidebar />
@@ -29,7 +31,7 @@ function App() {
       <Route exact path="/all-tests" element={<AllTestsPage/>} /> 
       <Route exact path="/categories" element={<CategoriesPage/>} /> 
       <Route exact path="/levels" element={<LevelsPage/>} /> 
-      <Route exact path="/testCard" element={<TestCard/>} /> 
+      <Route exact path="/testCard" element={<TestCard/>} />  
       </Routes>
       </div>
     </div>

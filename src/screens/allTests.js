@@ -35,9 +35,9 @@ function AllTestsPage(){
 
     const allTests=tests.map((el)=>{
       return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345 }} key={el.id}>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div" key={el.id}>
+          <Typography gutterBottom variant="h5" component="div" >
             {el.description}
           </Typography>
         </CardContent>
