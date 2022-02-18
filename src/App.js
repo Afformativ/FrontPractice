@@ -16,6 +16,8 @@ Route,
 NavLink,
 Routes
 }from'react-router-dom';
+import TestByLvl from './screens/TestByLvl';
+import TestByCat from './screens/TestByCat';
 
 
 
@@ -32,6 +34,8 @@ function App() {
       <Route exact path="/categories" element={<CategoriesPage/>} /> 
       <Route exact path="/levels" element={<LevelsPage/>} /> 
       <Route exact path="/testCard" element={<TestCard/>} />  
+      <Route exact path="/testByLvl" element={<TestByLvl/>} /> 
+      <Route exact path="/testByCat" element={<TestByCat/>} /> 
       </Routes>
       </div>
     </div>

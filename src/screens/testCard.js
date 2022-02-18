@@ -7,8 +7,8 @@ function TestCard (props){
     const [questions, setQuestions]=useState([]);
     const [answer,setAnswer]=useState()
     const [points,setPoints]=useState(0)
-    const [gameEnded,setGameEnded]=useState(false)
     const[currIndex,setCurrIndex]=useState(0)
+    const [showAnswer, setShowAnswer]=useState(false)
     const {state}=useLocation();
 
 
@@ -16,13 +16,17 @@ function TestCard (props){
     return getTest(setQuestions,state.id)
     
   },[]) 
- 
+
   const handleAnswer = (ans) =>{
-   setCurrIndex(currIndex + 1);
-    getAnswer(setAnswer,questions[currIndex].id,ans) 
-    console.log(answer)
+    getAnswer(setAnswer,questions[currIndex].id,ans)     
+    setShowAnswer(true)
+    setShowAnswer(true)
+  }
+  
+  const handleNext = ()=>{
+    setCurrIndex(currIndex + 1);  
     if(answer===true){
-      setPoints(points+1)
+      setPoints(points + questions[currIndex].question.points)
     }
   }
   
@@ -57,8 +61,8 @@ function TestCard (props){
           backgroundColor:"white"
         };
       }
+     
       if(item.id>0) {
-        
       return(
         <button
         onClick={()=>handleAnswer(item.id)}
@@ -77,10 +81,13 @@ function TestCard (props){
     )  
   })
 
-    return gameEnded ?(
-      <div>Your have earned {points}</div>
-    ) : (        
-         <div>{Card[currIndex]}</div>        
+    return currIndex>questions.length -1?(
+      <h1 className='text-3xl text-white font-bold'>Your have earned {points} points</h1>
+    ) : (      
+      <div> 
+         <div>{Card[currIndex]}</div>  
+         <button onClick={()=>handleNext()}>Next</button> 
+         </div>   
     )
 }
 

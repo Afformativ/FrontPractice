@@ -16,13 +16,13 @@ function LevelsPage(){
 
     const navigation=useNavigate();
 
-    const fetchLvl= async (id="")=>{
-        const {data}= await axios.get(`https://localhost:44310/api/TestSets/getByLevel/${id}`)
-  
-    }
     const handleSubmit=(id)=>{
-        fetchLvl(id)
-        
+
+        navigation('/TestByLvl', {
+            state: {
+              id: id,
+            }
+          });
     }
 
     const allLvl=level.map((el)=>{

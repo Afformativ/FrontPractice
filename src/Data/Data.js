@@ -6,9 +6,22 @@ const lvl_url=url("TestLevels")
 const all_url=url("TestSets")
 const checkAnswer=(quest,answ)=>`https://localhost:44310/api/Tests/checkAnswer/${quest}&${answ}`
 const test_url=(value)=>`https://localhost:44310/api/Tests/getTests/${value}`
+const testByLvl=(value)=>`https://localhost:44310/api/TestSets/getByLevel/${value}`
+const testByCat=(value)=>`https://localhost:44310/api/TestSets/getByCategory/${value}`
 
 const getTest=(setState,value)=>{
     axios.get(test_url(value)).then(res=>{
+        setState(res.data.entity)
+    }).catch(err=>console.log(err))
+}
+
+const getTestByLvl=(setState,value)=>{
+    axios.get(testByLvl(value)).then(res=>{
+        setState(res.data.entity)
+    }).catch(err=>console.log(err))
+}
+const getTestByCat=(setState,value)=>{
+    axios.get(testByCat(value)).then(res=>{
         setState(res.data.entity)
     }).catch(err=>console.log(err))
 }
@@ -38,4 +51,4 @@ const getAnswer=(setState, quest,answ)=>{
     }).catch(err=>console.log(err))
 }
 
-export {getLvl,getCat,getAll,getAnswer, getTest}
+export {getLvl,getCat,getAll,getAnswer, getTest, getTestByLvl, getTestByCat}
