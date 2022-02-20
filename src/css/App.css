@@ -102,3 +102,14 @@ line-height: 1;
     flex-direction: row;
     justify-content: space-between;   
 }
+.card{
+    margin-right: 15px;
+}
+.cardcontent{
+    width: 200px;
+    height: 500px;
+    overflow-y: scroll;
+}
+.cardcontent::-webkit-scrollbar{
+    display: none;
+}

@@ -9,7 +9,7 @@ import { getAll} from "../Data/Data";
 import{useNavigate}from "react-router-dom"
 
 
-function AllTestsPage(){    
+function AllTestsPage({classes}){    
     useEffect(()=>{
       document.title = "All Tests";
   })
@@ -35,8 +35,8 @@ function AllTestsPage(){
 
     const allTests=tests.map((el)=>{
       return (
-        <Card sx={{ maxWidth: 345 }} key={el.id}>
-        <CardContent>
+        <Card sx={{ maxWidth: 345 }} key={el.id} className='card'>
+        <CardContent className='cardcontent'>
           <Typography gutterBottom variant="h5" component="div" >
             {el.description}
           </Typography>

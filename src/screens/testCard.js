@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React,{useEffect, useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import { getAnswer, getTest } from '../Data/Data';
@@ -5,32 +6,46 @@ import { getAnswer, getTest } from '../Data/Data';
 
 function TestCard (props){
     const [questions, setQuestions]=useState([]);
-    const [answer,setAnswer]=useState()
+    //const [answer,setAnswer]=useState()
     const [points,setPoints]=useState(0)
-    const[currIndex,setCurrIndex]=useState(0)
-    const [showAnswer, setShowAnswer]=useState(false)
+    const [currIndex,setCurrIndex]=useState(0)
     const {state}=useLocation();
+    const [isActive,setIsActive]=useState(true)
 
 
   useEffect(()=>{
     return getTest(setQuestions,state.id)
     
   },[]) 
+  let col ;
+  let result;
+  const handleAnswer = (ans, event) =>{
+    if(isActive){
+    axios.get(`https://localhost:44310/api/Tests/checkAnswer/${questions[currIndex].id}&${ans}`).then(res=>{
+      result=res.data.entity
+      switch (result){
+        case true:
+          col= "green"  
+          break;
+        case false:
+          col="red"
+          break;
+        default:col="white"
+      }
+      event.target.style.backgroundColor=col
+      if(result===true){
+        setPoints(points + questions[currIndex].question.points)
+      }
+  }).catch(err=>console.log(err)) 
+  setIsActive(false)
+          }    
+  }
 
-  const handleAnswer = (ans) =>{
-    getAnswer(setAnswer,questions[currIndex].id,ans)     
-    setShowAnswer(true)
-    setShowAnswer(true)
-  }
-  
   const handleNext = ()=>{
-    setCurrIndex(currIndex + 1);  
-    if(answer===true){
-      setPoints(points + questions[currIndex].question.points)
-    }
+    setCurrIndex(currIndex + 1);    
+    setIsActive(true)
   }
-  
-  
+ 
   const allQuestions = questions.map((el)=>{
     const allAnswers = el.answers.map((el)=>{
       return({
@@ -45,28 +60,12 @@ function TestCard (props){
 
   const Card=allQuestions.map((el)=>{
       const buttons = el.map((item)=>{ 
-      let col ;
-      switch (answer){
-        case true:
-          col={
-            backgroundColor:"green"
-          };
-          break;
-        case false:
-          col={
-            backgroundColor:"red"
-          };
-          break;
-        default:col={
-          backgroundColor:"white"
-        };
-      }
      
       if(item.id>0) {
       return(
         <button
-        onClick={()=>handleAnswer(item.id)}
-        style={col} 
+        onClick={(event)=>handleAnswer(item.id, event)}
+        
         key={item.id}
         >{item.answer}</button>
       )}
