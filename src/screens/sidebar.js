@@ -15,8 +15,6 @@ function Sidebar(){
         {label:"Levels",slug:"levels"}
     ])
 
-    const[currentPage,setCurrentPage]=useState("/")
-
     var navigation =[];
     for(let i = 0;i< nav.length;i++){
         navigation.push(
@@ -30,7 +28,7 @@ function Sidebar(){
 
     return(
         <div className="sidebar rel">
-            <a href="#" className="logo bl">
+            <a href="/" className="logo bl">
                 <img src={logo} className="bl"/>
             </a>
             <ul className="nav">

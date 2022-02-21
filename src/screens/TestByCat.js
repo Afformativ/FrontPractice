@@ -28,8 +28,8 @@ function TestByCat(props){
     }
     const TestsByCat=testByCat.map((el)=>{
         return (
-          <Card sx={{ maxWidth: 345 }} key={el.id}>
-          <CardContent>
+          <Card sx={{ maxWidth: 345 }} key={el.id} className='card'>
+          <CardContent className='cardcontent'>
             <Typography gutterBottom variant="h5" component="div" >
               {el.description}
             </Typography>
@@ -43,7 +43,7 @@ function TestByCat(props){
         )
       })
     return(
-        <div>{TestsByCat}</div>
+        <div className="tests">{TestsByCat}</div>
     )
 }
 

@@ -44,11 +44,22 @@ const getAll=(setState)=>{
     }).catch(err=>console.log(err))
 }
 
-const getAnswer=(setState, quest,answ)=>{
-    axios.get(checkAnswer(quest,answ)).then(res=>{
-        setState(res.data.entity)
-        console.log(res.data.entity)
-    }).catch(err=>console.log(err))
+const getColor= async(setState,points, questions,currIndex,ans,event)=>{
+    let color="white";
+    axios.get(`https://localhost:44310/api/Tests/checkAnswer/${questions[currIndex].id}&${ans}`).then(res=>{
+      switch (res.data.entity){ 
+        case true:
+          color="green"
+          break;
+        case false:
+            color="red"
+          break;
+        default:color="white"
+      }
+      event.target.style.backgroundColor=color
+      if(res.data.entity)
+      setState(points + questions[currIndex].question.points)
+  }).catch(err=>console.log(err)) 
 }
 
-export {getLvl,getCat,getAll,getAnswer, getTest, getTestByLvl, getTestByCat}
+export {getLvl,getCat,getAll,getColor, getTest, getTestByLvl, getTestByCat}

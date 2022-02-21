@@ -1,12 +1,11 @@
 import axios from 'axios';
 import React,{useEffect, useState} from 'react';
 import { useLocation } from 'react-router-dom';
-import { getAnswer, getTest } from '../Data/Data';
+import { getColor, getTest } from '../Data/Data';
 
 
 function TestCard (props){
     const [questions, setQuestions]=useState([]);
-    //const [answer,setAnswer]=useState()
     const [points,setPoints]=useState(0)
     const [currIndex,setCurrIndex]=useState(0)
     const {state}=useLocation();
@@ -17,28 +16,11 @@ function TestCard (props){
     return getTest(setQuestions,state.id)
     
   },[]) 
-  let col ;
-  let result;
   const handleAnswer = (ans, event) =>{
     if(isActive){
-    axios.get(`https://localhost:44310/api/Tests/checkAnswer/${questions[currIndex].id}&${ans}`).then(res=>{
-      result=res.data.entity
-      switch (result){
-        case true:
-          col= "green"  
-          break;
-        case false:
-          col="red"
-          break;
-        default:col="white"
-      }
-      event.target.style.backgroundColor=col
-      if(result===true){
-        setPoints(points + questions[currIndex].question.points)
-      }
-  }).catch(err=>console.log(err)) 
-  setIsActive(false)
-          }    
+      getColor(setPoints,points,questions,currIndex,ans,event)
+    setIsActive(false)
+    }    
   }
 
   const handleNext = ()=>{
@@ -65,14 +47,14 @@ function TestCard (props){
       return(
         <button
         onClick={(event)=>handleAnswer(item.id, event)}
-        
         key={item.id}
+        className='button'
         >{item.answer}</button>
       )}
     })
     return(
-      <div>
-        <div>
+      <div className='quest'> 
+        <div className='question'>
           {el[0]}
         </div>
         {buttons}
@@ -81,11 +63,11 @@ function TestCard (props){
   })
 
     return currIndex>questions.length -1?(
-      <h1 className='text-3xl text-white font-bold'>Your have earned {points} points</h1>
+      <h1 className='score '>Your have earned {points} points</h1>
     ) : (      
-      <div> 
+      <div className='testCard'> 
          <div>{Card[currIndex]}</div>  
-         <button onClick={()=>handleNext()}>Next</button> 
+         <button className='btn-next' onClick={()=>handleNext()}>Next</button> 
          </div>   
     )
 }

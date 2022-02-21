@@ -33,7 +33,6 @@ function LevelsPage(){
 
     return (
         <div className="app-page rel">
-            <h2 className="title ">Levels</h2>
             <div className="levels">
                 {allLvl}
             </div>

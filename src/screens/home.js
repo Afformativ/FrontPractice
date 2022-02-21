@@ -1,6 +1,5 @@
 import React,{useEffect} from "react";
-import TestCard from "./testCard";
-import {TextField} from "@material-ui/core"
+import photo from '../photos/Main.png';
 
 
 function HomePage (){
@@ -10,6 +9,7 @@ function HomePage (){
     return(
         <div className="home-page ">
            <div> <h2 className="title">Main Page</h2></div>
+           <img src={photo} className="bl"/>
         </div>
     )
 }
