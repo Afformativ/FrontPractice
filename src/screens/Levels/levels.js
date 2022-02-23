@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, {useEffect, useState} from "react";
-import { getLvl } from "../Data/Data";
+import { getLvl } from "../../Data/Data";
 import{useNavigate}from "react-router-dom"
 
 

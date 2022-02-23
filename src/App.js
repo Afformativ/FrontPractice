@@ -1,23 +1,21 @@
 //import logo from './logo.svg';
 import React,{useEffect, useState} from 'react';
-import axios from 'axios'
 import './css/props.css';
-import './css/App.css';
-import Header from './screens/header';
+import './css/App.scss';
 import Sidebar from './screens/sidebar';
 import HomePage from './screens/home';
-import AllTestsPage from './screens/allTests';
-import CategoriesPage from './screens/categories';
-import LevelsPage from './screens/levels';
-import TestCard from './screens/testCard';
+import AllTestsPage from './screens/Tests/allTests';
+import CategoriesPage from './screens/Categories/categories';
+import LevelsPage from './screens/Levels/levels';
+import TestCard from './screens/Tests/testCard';
 
 import{
 Route,
 NavLink,
 Routes
 }from'react-router-dom';
-import TestByLvl from './screens/TestByLvl';
-import TestByCat from './screens/TestByCat';
+import TestByLvl from './screens/Levels/TestByLvl';
+import TestByCat from './screens/Categories/TestByCat';
 
 
 

@@ -1,32 +1,32 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
-import { getTestByLvl } from "../Data/Data";
+import { getTestByCat } from "../../Data/Data";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Button, CardActions } from '@mui/material';
 import axios from "axios";
 
-function TestByLvl(props){
-    const [testByLvl,setTestByLvl]=useState([])
+function TestByCat(props){
+    const [testByCat,setTestByCat]=useState([])
     const {state}=useLocation();
     useEffect(()=>{
-        return getTestByLvl(setTestByLvl,state.id)
+        return getTestByCat(setTestByCat,state.id)
     },[])
     const navigation=useNavigate();
-    const fetchLvl= async (id="")=>{
-        const {data}= await axios.get(`https://localhost:44310/api/TestSets/getByLevel/${id}`)
+    const fetchCat= async (id="")=>{
+        const {data}= await axios.get(`https://localhost:44310/api/TestSets/getByCategory/${id}`)
   
     }
     const handleSubmit=(id)=>{
-        fetchLvl(id)
+        fetchCat(id)
         navigation('/TestCard', {
           state: {
             id: id,
           }
         });
     }
-    const Tests=testByLvl.map((el)=>{
+    const TestsByCat=testByCat.map((el)=>{
         return (
           <Card sx={{ maxWidth: 345 }} key={el.id} className='card'>
           <CardContent className='cardcontent'>
@@ -43,8 +43,8 @@ function TestByLvl(props){
         )
       })
     return(
-        <div className="tests">{Tests}</div>
+        <div className="tests">{TestsByCat}</div>
     )
 }
 
-export default TestByLvl;
+export default TestByCat;

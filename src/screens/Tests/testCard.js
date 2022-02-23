@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React,{useEffect, useState} from 'react';
 import { useLocation } from 'react-router-dom';
-import { getColor, getTest } from '../Data/Data';
+import { getColor, getTest } from '../../Data/Data';
 
 
 function TestCard (props){

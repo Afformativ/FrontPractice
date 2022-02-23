@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import { useNavigate } from 'react-router'
-import { getCat } from '../Data/Data'
+import { getCat } from '../../Data/Data'
+
 
 function CategoriesPage(){
     const[categories,setCategories]=useState([])

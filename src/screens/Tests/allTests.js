@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActions } from '@mui/material';
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
-import { getAll} from "../Data/Data";
+import { getAll} from "../../Data/Data";
 import{useNavigate}from "react-router-dom"
 
 
